@@ -1,9 +1,15 @@
 class Matrix
-  attr_reader :rows
-  attr_reader :columns
+  attr_reader :matrix
 
   def initialize(matrix)
-    @rows = matrix.split("\n").map{|v| v.split.map(&:to_i)}
-    @columns = @rows.transpose
+    @matrix = matrix
+  end
+
+  def columns
+    rows.transpose
+  end
+
+  def rows
+    @matrix.each_line.map{|v| v.split.map(&:to_i)}
   end
 end
