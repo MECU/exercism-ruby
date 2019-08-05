@@ -7,6 +7,6 @@ class Series
 
   def slices(slice_size)
     raise ArgumentError if slice_size > @input.length
-    (0..@input.length - slice_size).map {|i| @input[i..i + slice_size - 1]}
+    (0..@input.length - slice_size).map {|i| @input[i, slice_size]}
   end
 end
