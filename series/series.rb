@@ -1,12 +1,12 @@
 class Series
-  attr_reader :input
+  attr_reader :series
 
-  def initialize(input)
-    @input = input
+  def initialize(series)
+    @series = series
   end
 
   def slices(slice_size)
-    raise ArgumentError if slice_size > @input.length
-    (0..@input.length - slice_size).map {|i| @input[i, slice_size]}
+    raise ArgumentError if slice_size > series.length
+    series.each_char.to_enum.each_cons(slice_size).map(&:join)
   end
 end
