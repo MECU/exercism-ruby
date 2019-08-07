@@ -6,7 +6,12 @@ class Phrase
   end
 
   def word_count
-    word_array = phrase.strip.downcase.scan(/\b[^\s,]+\b/)
-    Hash[word_array.map {|k| [k, word_array.count(k)]}]
+    process_phrase.map {|k| [k, process_phrase.count(k)]}.to_h
+  end
+
+  private
+  
+  def process_phrase
+    phrase.strip.downcase.scan(/\b[^\s,]+\b/)
   end
 end
